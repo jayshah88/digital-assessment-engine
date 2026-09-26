@@ -1,7 +1,7 @@
 {
-  "name": "digital-assessment-pro",
+  "name": "digital-assessment-engine",
   "version": "2.1.0",
-  "description": "React frontend for Digital Assessment Pro WordPress plugin",
+  "description": "React frontend for Digital Assessment Engine WordPress plugin",
   "author": "Gexior Systems, Jay Shah <shahjaya.94@gmail.com>",
   "homepage": "https://profiles.wordpress.org/jayshah88/",
   "license": "GPL-2.0-or-later",

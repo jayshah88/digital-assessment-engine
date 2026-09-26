@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { ZipArchive } from 'archiver';
 
 async function run() {
-  const zipPath = resolve('../digital-assessment-pro.zip');
+  const zipPath = resolve('../digital-assessment-engine.zip');
 
   console.log('Cleaning up previous zip...');
   if (fs.existsSync(zipPath)) {
@@ -48,7 +48,7 @@ async function run() {
     'includes',
     'languages',
     'templates',
-    'digital-assessment-pro.php',
+    'digital-assessment-engine.php',
     'uninstall.php',
     'block.json',
     'readme.txt'
@@ -61,12 +61,12 @@ async function run() {
       const stats = fs.statSync(srcPath);
       if (stats.isDirectory()) {
         console.log(`Adding folder: ${item}`);
-        // We set the target prefix to 'digital-assessment-pro/item' so it extracts nicely.
+        // We set the target prefix to 'digital-assessment-engine/item' so it extracts nicely.
         // archiver's directory() method automatically translates all paths to forward slashes.
-        archive.directory(srcPath, `digital-assessment-pro/${item}`);
+        archive.directory(srcPath, `digital-assessment-engine/${item}`);
       } else {
         console.log(`Adding file: ${item}`);
-        archive.file(srcPath, { name: `digital-assessment-pro/${item}` });
+        archive.file(srcPath, { name: `digital-assessment-engine/${item}` });
       }
     } else {
       console.warn(`File/Directory not found: ${item}`);

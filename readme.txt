@@ -1,4 +1,4 @@
-=== Digital Assessment Pro ===
+=== Digital Assessment Engine – Interactive Scorecards & Radar Charts ===
 Contributors:      jayshah88
 Tags:              assessment, quiz, scoring, radar-chart, analytics
 Requires at least: 6.2
@@ -8,11 +8,11 @@ Stable tag:        2.1.0
 License:           GPL v2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Enterprise-grade digital assessment engine with React UI, weighted scoring, radar charts, lead capture, and analytics.
+Enterprise-grade interactive assessment and scorecard engine with React UI, weighted scoring, radar charts, lead capture, and analytics.
 
 == Description ==
 
-**Digital Assessment Pro** is a production-grade, SaaS-quality assessment plugin for WordPress. It enables you to build scored multi-step assessments with beautiful radar chart results, lead capture gating, full analytics, and extensible architecture.
+**Digital Assessment Engine** is a production-grade, SaaS-quality interactive scorecard and assessment engine for WordPress. It enables you to build scored multi-step assessments with beautiful radar chart results, lead capture gating, full analytics, and extensible architecture.
 
 **Core Features:**
 
@@ -29,12 +29,13 @@ Enterprise-grade digital assessment engine with React UI, weighted scoring, rada
 
 **Shortcode Usage:**
 
-`[dap_assessment id="1"]`
-`[dap_assessment slug="my-assessment"]`
+`[digital_assessment id="1"]`
+`[digital_assessment slug="my-assessment"]`
+*(Legacy shortcode `[dap_assessment]` is also fully supported)*
 
 **Gutenberg Block:**
 
-Available as "Digital Assessment" block in the Interactive category.
+Available as "Digital Assessment Engine" block in the Interactive category.
 
 **REST API:**
 

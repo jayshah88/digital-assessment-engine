@@ -96,7 +96,7 @@ class AnalyticsController extends BaseController {
 			
 			return $this->error(
 				'analytics_error',
-				__( 'Failed to retrieve analytics data.', 'digital-assessment-pro' ),
+				__( 'Failed to retrieve analytics data.', 'digital-assessment-engine' ),
 				500
 			);
 		}

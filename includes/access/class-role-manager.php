@@ -100,7 +100,7 @@ class RoleManager {
 		return function ( ?\WP_REST_Request $request = null ) use ( $cap ): bool|\WP_Error {
 			$user = wp_get_current_user();
 			if ( ! $user || ! $user->exists() ) {
-				return new \WP_Error( 'dap_unauthorized', __( 'Authentication required.', 'digital-assessment-pro' ), [ 'status' => 401 ] );
+				return new \WP_Error( 'dap_unauthorized', __( 'Authentication required.', 'digital-assessment-engine' ), [ 'status' => 401 ] );
 			}
 			$has_cap = match ( $cap ) {
 				'dap_manage_assessments' => $user->has_cap( 'dap_manage_assessments' ),
@@ -115,7 +115,7 @@ class RoleManager {
 				default                  => $user->has_cap( 'manage_options' ),
 			};
 			if ( ! $has_cap && ! $user->has_cap( 'manage_options' ) ) {
-				return new \WP_Error( 'dap_forbidden', __( 'Insufficient permissions.', 'digital-assessment-pro' ), [ 'status' => 403 ] );
+				return new \WP_Error( 'dap_forbidden', __( 'Insufficient permissions.', 'digital-assessment-engine' ), [ 'status' => 403 ] );
 			}
 			return true;
 		};

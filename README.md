@@ -1,8 +1,8 @@
-# Digital Assessment Pro — WordPress Plugin
+# Digital Assessment Engine — WordPress Plugin
 
-**Version:** 2.1.0 · **Requires PHP:** 8.0+ · **Requires WordPress:** 6.0+
+**Version:** 2.1.0 · **Requires PHP:** 8.0+ · **Requires WordPress:** 6.2+
 
-A production-grade, SaaS-quality digital assessment plugin with React frontend, weighted scoring engine, radar chart visualisations, lead capture, email automation, and analytics.
+A production-grade, SaaS-quality interactive assessment and scorecard engine with React frontend, weighted scoring engine, radar chart visualisations, lead capture, email automation, and analytics.
 
 ---
 
@@ -46,9 +46,9 @@ A production-grade, SaaS-quality digital assessment plugin with React frontend, 
 ## Architecture Overview
 
 ```
-digital-assessment-pro/
-├── digital-assessment-pro.php   ← Plugin bootstrap & constants
-├── block.json                   ← Gutenberg block registration
+digital-assessment-engine/
+├── digital-assessment-engine.php   ← Plugin bootstrap & constants
+├── block.json                      ← Gutenberg block registration
 ├── uninstall.php                ← Safe uninstall handler
 │
 ├── includes/

@@ -62,7 +62,7 @@ abstract class BaseController extends \WP_REST_Controller {
 	}
 
 	protected function not_found( string $message = '' ): \WP_Error {
-		return $this->error( 'not_found', $message ?: __( 'Resource not found.', 'digital-assessment-pro' ), 404 );
+		return $this->error( 'not_found', $message ?: __( 'Resource not found.', 'digital-assessment-engine' ), 404 );
 	}
 
 	// ─── Rate Limiting ────────────────────────────────────────────────────
@@ -113,7 +113,7 @@ abstract class BaseController extends \WP_REST_Controller {
 		if ( ! $result ) {
 			return $this->error(
 				'rate_limited',
-				__( 'Too many requests. Please try again later.', 'digital-assessment-pro' ),
+				__( 'Too many requests. Please try again later.', 'digital-assessment-engine' ),
 				429
 			);
 		}
@@ -232,7 +232,7 @@ abstract class BaseController extends \WP_REST_Controller {
 		}
 		return $this->error(
 			'invalid_nonce',
-			__( 'Security verification failed. Please refresh the page and try again.', 'digital-assessment-pro' ),
+			__( 'Security verification failed. Please refresh the page and try again.', 'digital-assessment-engine' ),
 			403
 		);
 	}
@@ -244,7 +244,7 @@ abstract class BaseController extends \WP_REST_Controller {
 			if ( ! $request->has_param( $param ) || '' === $request->get_param( $param ) ) {
 				return $this->error(
 					'missing_param',
-					sprintf( __( 'Required parameter missing: %s', 'digital-assessment-pro' ), $param )
+					sprintf( __( 'Required parameter missing: %s', 'digital-assessment-engine' ), $param )
 				);
 			}
 		}

@@ -24,7 +24,9 @@ class Loader {
 		return is_singular()
 			&& $post instanceof \WP_Post
 			&& (
-				has_shortcode( $post->post_content, 'dap_assessment' )
+				has_shortcode( $post->post_content, 'digital_assessment' )
+				|| has_shortcode( $post->post_content, 'dap_assessment' )
+				|| has_block( 'digital-assessment-engine/assessment', $post )
 				|| has_block( 'digital-assessment-pro/assessment', $post )
 			);
 	}
@@ -107,17 +109,17 @@ class Loader {
 
 	private function get_i18n_strings(): array {
 		return apply_filters( 'dap/i18n', [
-			'startBtn'         => __( 'Start Assessment', 'digital-assessment-pro' ),
-			'nextBtn'          => __( 'Next', 'digital-assessment-pro' ),
-			'prevBtn'          => __( 'Back', 'digital-assessment-pro' ),
-			'submitBtn'        => __( 'Submit', 'digital-assessment-pro' ),
-			'loading'          => __( 'Loading…', 'digital-assessment-pro' ),
-			'errorGeneric'     => __( 'Something went wrong. Please try again.', 'digital-assessment-pro' ),
-			'leadGateTitle'    => __( 'Unlock Your Full Report', 'digital-assessment-pro' ),
-			'leadGateSubtitle' => __( 'Enter your details to access your results.', 'digital-assessment-pro' ),
-			'emailPlaceholder' => __( 'Your work email', 'digital-assessment-pro' ),
-			'namePlaceholder'  => __( 'Your name', 'digital-assessment-pro' ),
-			'gdprText'         => __( 'I agree to receive my results and occasional insights. Unsubscribe anytime.', 'digital-assessment-pro' ),
+			'startBtn'         => __( 'Start Assessment', 'digital-assessment-engine' ),
+			'nextBtn'          => __( 'Next', 'digital-assessment-engine' ),
+			'prevBtn'          => __( 'Back', 'digital-assessment-engine' ),
+			'submitBtn'        => __( 'Submit', 'digital-assessment-engine' ),
+			'loading'          => __( 'Loading…', 'digital-assessment-engine' ),
+			'errorGeneric'     => __( 'Something went wrong. Please try again.', 'digital-assessment-engine' ),
+			'leadGateTitle'    => __( 'Unlock Your Full Report', 'digital-assessment-engine' ),
+			'leadGateSubtitle' => __( 'Enter your details to access your results.', 'digital-assessment-engine' ),
+			'emailPlaceholder' => __( 'Your work email', 'digital-assessment-engine' ),
+			'namePlaceholder'  => __( 'Your name', 'digital-assessment-engine' ),
+			'gdprText'         => __( 'I agree to receive my results and occasional insights. Unsubscribe anytime.', 'digital-assessment-engine' ),
 		] );
 	}
 }

@@ -32,8 +32,8 @@ class Privacy {
 	 * @return array
 	 */
 	public static function register_exporter( array $exporters ): array {
-		$exporters['digital-assessment-pro'] = [
-			'exporter_friendly_name' => __( 'Digital Assessment Pro Lead & Quiz Data', 'digital-assessment-pro' ),
+		$exporters['digital-assessment-engine'] = [
+			'exporter_friendly_name' => __( 'Digital Assessment Pro Lead & Quiz Data', 'digital-assessment-engine' ),
 			'callback'               => [ __CLASS__, 'export_personal_data' ],
 		];
 		return $exporters;
@@ -67,54 +67,54 @@ class Privacy {
 
 			$lead_item_data = [
 				[
-					'name'  => __( 'Email', 'digital-assessment-pro' ),
+					'name'  => __( 'Email', 'digital-assessment-engine' ),
 					'value' => $lead['email'],
 				],
 				[
-					'name'  => __( 'First Name', 'digital-assessment-pro' ),
+					'name'  => __( 'First Name', 'digital-assessment-engine' ),
 					'value' => $lead['first_name'],
 				],
 				[
-					'name'  => __( 'Last Name', 'digital-assessment-pro' ),
+					'name'  => __( 'Last Name', 'digital-assessment-engine' ),
 					'value' => $lead['last_name'],
 				],
 				[
-					'name'  => __( 'Company', 'digital-assessment-pro' ),
+					'name'  => __( 'Company', 'digital-assessment-engine' ),
 					'value' => $lead['company'],
 				],
 				[
-					'name'  => __( 'Phone', 'digital-assessment-pro' ),
+					'name'  => __( 'Phone', 'digital-assessment-engine' ),
 					'value' => $lead['phone'],
 				],
 				[
-					'name'  => __( 'Job Title', 'digital-assessment-pro' ),
+					'name'  => __( 'Job Title', 'digital-assessment-engine' ),
 					'value' => $metadata['job_title'] ?? '',
 				],
 				[
-					'name'  => __( 'Country', 'digital-assessment-pro' ),
+					'name'  => __( 'Country', 'digital-assessment-engine' ),
 					'value' => $metadata['country'] ?? '',
 				],
 				[
-					'name'  => __( 'Normalized Score', 'digital-assessment-pro' ),
+					'name'  => __( 'Normalized Score', 'digital-assessment-engine' ),
 					'value' => $lead['normalized_score'] . '%',
 				],
 				[
-					'name'  => __( 'Score Level', 'digital-assessment-pro' ),
+					'name'  => __( 'Score Level', 'digital-assessment-engine' ),
 					'value' => $lead['score_level'],
 				],
 				[
-					'name'  => __( 'GDPR Consent Given', 'digital-assessment-pro' ),
-					'value' => $lead['gdpr_consent'] ? __( 'Yes', 'digital-assessment-pro' ) : __( 'No', 'digital-assessment-pro' ),
+					'name'  => __( 'GDPR Consent Given', 'digital-assessment-engine' ),
+					'value' => $lead['gdpr_consent'] ? __( 'Yes', 'digital-assessment-engine' ) : __( 'No', 'digital-assessment-engine' ),
 				],
 				[
-					'name'  => __( 'Consent Date', 'digital-assessment-pro' ),
+					'name'  => __( 'Consent Date', 'digital-assessment-engine' ),
 					'value' => $lead['consent_at'] ?: $lead['created_at'],
 				],
 			];
 
 			$data_to_export[] = [
 				'group_id'    => 'dap_lead_data',
-				'group_label' => __( 'Digital Assessment Pro — Lead Profile', 'digital-assessment-pro' ),
+				'group_label' => __( 'Digital Assessment Pro — Lead Profile', 'digital-assessment-engine' ),
 				'item_id'     => "dap-lead-{$lead['id']}",
 				'data'        => $lead_item_data,
 			];
@@ -132,31 +132,31 @@ class Privacy {
 				foreach ( $submissions as $sub ) {
 					$data_to_export[] = [
 						'group_id'    => 'dap_submissions_data',
-						'group_label' => __( 'Digital Assessment Pro — Submissions', 'digital-assessment-pro' ),
+						'group_label' => __( 'Digital Assessment Pro — Submissions', 'digital-assessment-engine' ),
 						'item_id'     => "dap-submission-{$sub['id']}",
 						'data'        => [
 							[
-								'name'  => __( 'Submission Identifier', 'digital-assessment-pro' ),
+								'name'  => __( 'Submission Identifier', 'digital-assessment-engine' ),
 								'value' => $sub['uuid'],
 							],
 							[
-								'name'  => __( 'Total Score', 'digital-assessment-pro' ),
+								'name'  => __( 'Total Score', 'digital-assessment-engine' ),
 								'value' => $sub['total_score'],
 							],
 							[
-								'name'  => __( 'Normalized Score', 'digital-assessment-pro' ),
+								'name'  => __( 'Normalized Score', 'digital-assessment-engine' ),
 								'value' => $sub['normalized_score'] . '%',
 							],
 							[
-								'name'  => __( 'Score Level', 'digital-assessment-pro' ),
+								'name'  => __( 'Score Level', 'digital-assessment-engine' ),
 								'value' => $sub['score_level'],
 							],
 							[
-								'name'  => __( 'Status', 'digital-assessment-pro' ),
+								'name'  => __( 'Status', 'digital-assessment-engine' ),
 								'value' => $sub['status'],
 							],
 							[
-								'name'  => __( 'Completed Date', 'digital-assessment-pro' ),
+								'name'  => __( 'Completed Date', 'digital-assessment-engine' ),
 								'value' => $sub['completed_at'] ?: $sub['started_at'],
 							],
 						],
@@ -178,8 +178,8 @@ class Privacy {
 	 * @return array
 	 */
 	public static function register_eraser( array $erasers ): array {
-		$erasers['digital-assessment-pro'] = [
-			'eraser_friendly_name' => __( 'Digital Assessment Pro Lead & Quiz Data', 'digital-assessment-pro' ),
+		$erasers['digital-assessment-engine'] = [
+			'eraser_friendly_name' => __( 'Digital Assessment Pro Lead & Quiz Data', 'digital-assessment-engine' ),
 			'callback'             => [ __CLASS__, 'erase_personal_data' ],
 		];
 		return $erasers;
@@ -234,14 +234,14 @@ class Privacy {
 				$items_removed++;
 				$messages[] = sprintf(
 					/* translators: %s: email address */
-					__( 'Personal assessment data for %s has been deleted and submissions anonymized.', 'digital-assessment-pro' ),
+					__( 'Personal assessment data for %s has been deleted and submissions anonymized.', 'digital-assessment-engine' ),
 					$email_address
 				);
 			} else {
 				$items_retained++;
 				$messages[] = sprintf(
 					/* translators: %s: email address */
-					__( 'Failed to delete personal assessment data for %s.', 'digital-assessment-pro' ),
+					__( 'Failed to delete personal assessment data for %s.', 'digital-assessment-engine' ),
 					$email_address
 				);
 			}
@@ -272,16 +272,16 @@ class Privacy {
 			'<li>%s</li>' .
 			'</ul>' .
 			'<p>%s</p>',
-			esc_html__( 'Interactive Assessments & Quizzes', 'digital-assessment-pro' ),
-			esc_html__( 'When you participate in an interactive assessment on this website, we collect information you provide in the questionnaire along with any optional contact details you submit to receive your score report. Specifically, this may include:', 'digital-assessment-pro' ),
-			esc_html__( 'Your quiz responses, score metrics, and completion timestamps.', 'digital-assessment-pro' ),
-			esc_html__( 'Contact details such as name, email address, company, and job title when requesting a report.', 'digital-assessment-pro' ),
-			esc_html__( 'Technical diagnostics such as an anonymized IP address and browser user-agent to prevent duplicate submissions.', 'digital-assessment-pro' ),
-			esc_html__( 'This data is used solely to generate your diagnostic report and provide personalized recommendations. You may request an export or erasure of your personal assessment data at any time via the WordPress Privacy tools.', 'digital-assessment-pro' )
+			esc_html__( 'Interactive Assessments & Quizzes', 'digital-assessment-engine' ),
+			esc_html__( 'When you participate in an interactive assessment on this website, we collect information you provide in the questionnaire along with any optional contact details you submit to receive your score report. Specifically, this may include:', 'digital-assessment-engine' ),
+			esc_html__( 'Your quiz responses, score metrics, and completion timestamps.', 'digital-assessment-engine' ),
+			esc_html__( 'Contact details such as name, email address, company, and job title when requesting a report.', 'digital-assessment-engine' ),
+			esc_html__( 'Technical diagnostics such as an anonymized IP address and browser user-agent to prevent duplicate submissions.', 'digital-assessment-engine' ),
+			esc_html__( 'This data is used solely to generate your diagnostic report and provide personalized recommendations. You may request an export or erasure of your personal assessment data at any time via the WordPress Privacy tools.', 'digital-assessment-engine' )
 		);
 
 		wp_add_privacy_policy_content(
-			__( 'Digital Assessment Pro', 'digital-assessment-pro' ),
+			__( 'Digital Assessment Pro', 'digital-assessment-engine' ),
 			wp_kses_post( wpautop( $content, false ) )
 		);
 	}

@@ -154,19 +154,19 @@ class QuestionsController extends BaseController {
 		$question_text = sanitize_textarea_field( $request->get_param( 'question_text' ) );
 
 		if ( ! $block_id || ! $assessment_id || empty( $question_text ) ) {
-			return $this->error( 'missing_params', __( 'block_id, assessment_id, and question_text are required.', 'digital-assessment-pro' ) );
+			return $this->error( 'missing_params', __( 'block_id, assessment_id, and question_text are required.', 'digital-assessment-engine' ) );
 		}
 
 		// Validate question_type against allowed enum values.
 		$valid_types = [ 'single', 'multi', 'scale', 'text', 'boolean' ];
 		$question_type = sanitize_text_field( $request->get_param( 'question_type' ) ?? 'single' );
 		if ( ! in_array( $question_type, $valid_types, true ) ) {
-			return $this->error( 'invalid_type', __( 'Invalid question type. Allowed: single, multi, scale, text, boolean.', 'digital-assessment-pro' ), 400 );
+			return $this->error( 'invalid_type', __( 'Invalid question type. Allowed: single, multi, scale, text, boolean.', 'digital-assessment-engine' ), 400 );
 		}
 
 		// Validate question_text length.
 		if ( mb_strlen( $question_text ) > 5000 ) {
-			return $this->error( 'text_too_long', __( 'Question text must be under 5000 characters.', 'digital-assessment-pro' ), 400 );
+			return $this->error( 'text_too_long', __( 'Question text must be under 5000 characters.', 'digital-assessment-engine' ), 400 );
 		}
 
 		// Next sort order in block.

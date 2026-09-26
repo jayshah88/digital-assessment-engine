@@ -82,7 +82,7 @@ class SubmissionsController extends BaseController {
 		$answers       = $request->get_param( 'answers' ) ?? [];
 
 		if ( ! $assessment_id || empty( $answers ) ) {
-			return $this->error( 'missing_data', __( 'assessment_id and answers are required.', 'digital-assessment-pro' ) );
+			return $this->error( 'missing_data', __( 'assessment_id and answers are required.', 'digital-assessment-engine' ) );
 		}
 
 		// Load assessment + version snapshot.
@@ -98,7 +98,7 @@ class SubmissionsController extends BaseController {
 		);
 
 		if ( ! $assessment ) {
-			return $this->not_found( __( 'Assessment not found or not published.', 'digital-assessment-pro' ) );
+			return $this->not_found( __( 'Assessment not found or not published.', 'digital-assessment-engine' ) );
 		}
 
 		// Load questions from snapshot or live DB.
@@ -159,7 +159,7 @@ class SubmissionsController extends BaseController {
 				$this->db()->query( $this->db()->prepare( 'COMMIT /* %d */', 1 ) );
 			} catch ( \Exception $e ) {
 				$this->db()->query( $this->db()->prepare( 'ROLLBACK /* %d */', 1 ) );
-				return $this->error( 'persistence_failed', __( 'Could not save assessment results.', 'digital-assessment-pro' ), 500 );
+				return $this->error( 'persistence_failed', __( 'Could not save assessment results.', 'digital-assessment-engine' ), 500 );
 			}
 
 			// Track completion event.
@@ -232,7 +232,7 @@ class SubmissionsController extends BaseController {
 
 		// Strict UUID v4 format validation to prevent injection/enumeration.
 		if ( ! preg_match( '/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/', $raw_uuid, $matches ) ) {
-			return $this->error( 'invalid_uuid', __( 'Invalid result identifier.', 'digital-assessment-pro' ), 400 );
+			return $this->error( 'invalid_uuid', __( 'Invalid result identifier.', 'digital-assessment-engine' ), 400 );
 		}
 
 		$uuid = sanitize_text_field( $matches[0] );
@@ -248,7 +248,7 @@ class SubmissionsController extends BaseController {
 		);
 
 		if ( ! $sub ) {
-			return $this->not_found( __( 'Result not found.', 'digital-assessment-pro' ) );
+			return $this->not_found( __( 'Result not found.', 'digital-assessment-engine' ) );
 		}
 
 		$sub['block_scores'] = json_decode( $sub['block_scores'] ?? '{}', true );
@@ -539,7 +539,7 @@ class SubmissionsController extends BaseController {
 	public function bulk_delete( $request ) {
 		$ids = $request->get_param( 'ids' );
 		if ( ! is_array( $ids ) || empty( $ids ) ) {
-			return $this->error( 'invalid_ids', __( 'Invalid or empty IDs array.', 'digital-assessment-pro' ), 400 );
+			return $this->error( 'invalid_ids', __( 'Invalid or empty IDs array.', 'digital-assessment-engine' ), 400 );
 		}
 
 		// Wrap in transaction for atomicity
@@ -564,7 +564,7 @@ class SubmissionsController extends BaseController {
 			return $this->success( [ 'deleted' => $deleted ] );
 		} catch ( \Exception $e ) {
 			$this->db()->query( $this->db()->prepare( 'ROLLBACK /* %d */', 1 ) );
-			return $this->error( 'bulk_delete_failed', __( 'Failed to delete submissions. Please try again.', 'digital-assessment-pro' ), 500 );
+			return $this->error( 'bulk_delete_failed', __( 'Failed to delete submissions. Please try again.', 'digital-assessment-engine' ), 500 );
 		}
 	}
 
@@ -691,7 +691,7 @@ class SubmissionsController extends BaseController {
 			error_log( sprintf( '[DAP] Submission Validation Failed. Missing IDs: %s', implode( ',', $missing ) ) );
 			return $this->error(
 				'validation_failed',
-				__( 'Required questions are missing answers.', 'digital-assessment-pro' ),
+				__( 'Required questions are missing answers.', 'digital-assessment-engine' ),
 				422,
 				[ 'missing_question_ids' => array_values( $missing ) ]
 			);

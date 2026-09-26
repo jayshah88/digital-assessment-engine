@@ -81,18 +81,18 @@ class LeadsController extends BaseController {
 
 		// Enforce Required Fields
 		if ( empty( $first_name ) ) {
-			return $this->error( 'missing_fields', __( 'First name is required.', 'digital-assessment-pro' ) );
+			return $this->error( 'missing_fields', __( 'First name is required.', 'digital-assessment-engine' ) );
 		}
 
 		$require_full_identity = (bool) get_option( 'dap_require_company_fields', false );
 		$require_full_identity = (bool) apply_filters( 'dap/require_full_identity_fields', $require_full_identity, $request );
 
 		if ( $require_full_identity && ( empty( $last_name ) || empty( $company ) || empty( $job_title ) || empty( $country ) ) ) {
-			return $this->error( 'missing_fields', __( 'Please provide all required details (Name, Company, Job Title, Country).', 'digital-assessment-pro' ) );
+			return $this->error( 'missing_fields', __( 'Please provide all required details (Name, Company, Job Title, Country).', 'digital-assessment-engine' ) );
 		}
 
 		if ( ! is_email( $email ) ) {
-			return $this->error( 'invalid_email', __( 'A valid email address is required.', 'digital-assessment-pro' ) );
+			return $this->error( 'invalid_email', __( 'A valid email address is required.', 'digital-assessment-engine' ) );
 		}
 
 		// Work Email Sieve (Configurable)
@@ -106,13 +106,13 @@ class LeadsController extends BaseController {
 			] );
 			$domain = substr( strrchr( $email, '@' ), 1 );
 			if ( in_array( strtolower( (string) $domain ), $personal_domains, true ) ) {
-				return $this->error( 'personal_email', __( 'Please use your work email address.', 'digital-assessment-pro' ) );
+				return $this->error( 'personal_email', __( 'Please use your work email address.', 'digital-assessment-engine' ) );
 			}
 		}
 
 		$gdpr_consent = (bool) $request->get_param( 'gdpr_consent' );
 		if ( ! $gdpr_consent ) {
-			return $this->error( 'consent_required', __( 'Please accept the privacy terms to continue.', 'digital-assessment-pro' ) );
+			return $this->error( 'consent_required', __( 'Please accept the privacy terms to continue.', 'digital-assessment-engine' ) );
 		}
 
 		// Upsert lead.
@@ -296,7 +296,7 @@ class LeadsController extends BaseController {
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'wp_rest' ) ) {
 			return new \WP_Error(
 				'rest_forbidden',
-				__( 'Security verification failed or expired. Please refresh the page.', 'digital-assessment-pro' ),
+				__( 'Security verification failed or expired. Please refresh the page.', 'digital-assessment-engine' ),
 				[ 'status' => 403 ]
 			);
 		}
@@ -391,7 +391,7 @@ class LeadsController extends BaseController {
 	public function bulk_delete( $request ) {
 		$ids = $request->get_param( 'ids' );
 		if ( ! is_array( $ids ) || empty( $ids ) ) {
-			return $this->error( 'invalid_ids', __( 'Invalid or empty IDs array.', 'digital-assessment-pro' ), 400 );
+			return $this->error( 'invalid_ids', __( 'Invalid or empty IDs array.', 'digital-assessment-engine' ), 400 );
 		}
 
 		// Wrap in transaction for atomicity
@@ -417,7 +417,7 @@ class LeadsController extends BaseController {
 			return $this->success( [ 'deleted' => $deleted ] );
 		} catch ( \Exception $e ) {
 			$this->db()->query( $this->db()->prepare( 'ROLLBACK /* %d */', 1 ) );
-			return $this->error( 'bulk_delete_failed', __( 'Failed to delete leads. Please try again.', 'digital-assessment-pro' ), 500 );
+			return $this->error( 'bulk_delete_failed', __( 'Failed to delete leads. Please try again.', 'digital-assessment-engine' ), 500 );
 		}
 	}
 }

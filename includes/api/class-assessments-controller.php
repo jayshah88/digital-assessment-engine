@@ -198,7 +198,7 @@ class AssessmentsController extends BaseController {
 		);
 
 		if ( ! $row ) {
-			return $this->not_found( __( 'Assessment not found.', 'digital-assessment-pro' ) );
+			return $this->not_found( __( 'Assessment not found.', 'digital-assessment-engine' ) );
 		}
 
 		// Decode settings JSON.
@@ -259,7 +259,7 @@ class AssessmentsController extends BaseController {
 		$slug  = $this->sanitize_slug( $request->get_param( 'slug' ) ?: $title );
 
 		if ( empty( $title ) ) {
-			return $this->error( 'missing_title', __( 'Title is required.', 'digital-assessment-pro' ) );
+			return $this->error( 'missing_title', __( 'Title is required.', 'digital-assessment-engine' ) );
 		}
 
 		// Ensure unique slug.
@@ -419,7 +419,7 @@ class AssessmentsController extends BaseController {
 		);
 
 		if ( ! $row ) {
-			return $this->not_found( __( 'Assessment not found.', 'digital-assessment-pro' ) );
+			return $this->not_found( __( 'Assessment not found.', 'digital-assessment-engine' ) );
 		}
 
 		$data   = [];
@@ -449,7 +449,7 @@ class AssessmentsController extends BaseController {
 		if ( ! empty( $data ) ) {
 			$result = $this->db()->update( $this->table( 'assessments' ), $data, [ 'id' => $id ], $format, [ '%d' ] );
 			if ( false === $result ) {
-				return $this->error( 'db_error', __( 'Failed to update database.', 'digital-assessment-pro' ), 500 );
+				return $this->error( 'db_error', __( 'Failed to update database.', 'digital-assessment-engine' ), 500 );
 			}
 		}
 
@@ -486,7 +486,7 @@ class AssessmentsController extends BaseController {
 	public function bulk_delete( $request ) {
 		$ids = $request->get_param( 'ids' );
 		if ( ! is_array( $ids ) || empty( $ids ) ) {
-			return $this->error( 'invalid_ids', __( 'Invalid or empty IDs array.', 'digital-assessment-pro' ), 400 );
+			return $this->error( 'invalid_ids', __( 'Invalid or empty IDs array.', 'digital-assessment-engine' ), 400 );
 		}
 
 		// Wrap in transaction for atomicity
@@ -513,7 +513,7 @@ class AssessmentsController extends BaseController {
 			return $this->success( [ 'deleted' => $deleted ] );
 		} catch ( \Exception $e ) {
 			$this->db()->query( $this->db()->prepare( 'ROLLBACK /* %d */', 1 ) );
-			return $this->error( 'bulk_delete_failed', __( 'Failed to delete assessments. Please try again.', 'digital-assessment-pro' ), 500 );
+			return $this->error( 'bulk_delete_failed', __( 'Failed to delete assessments. Please try again.', 'digital-assessment-engine' ), 500 );
 		}
 	}
 
@@ -644,7 +644,7 @@ class AssessmentsController extends BaseController {
 
 		} catch ( \Exception $e ) {
 			$this->db()->query( $this->db()->prepare( 'ROLLBACK /* %d */', 1 ) );
-			return $this->error( 'duplication_failed', __( 'Could not duplicate assessment.', 'digital-assessment-pro' ), 500 );
+			return $this->error( 'duplication_failed', __( 'Could not duplicate assessment.', 'digital-assessment-engine' ), 500 );
 		}
 	}
 
@@ -777,61 +777,61 @@ class AssessmentsController extends BaseController {
 			'type'       => 'object',
 			'properties' => [
 				'id'              => [
-					'description' => __( 'Unique identifier for the assessment.', 'digital-assessment-pro' ),
+					'description' => __( 'Unique identifier for the assessment.', 'digital-assessment-engine' ),
 					'type'        => 'integer',
 					'context'     => [ 'view', 'edit', 'embed' ],
 					'readOnly'    => true,
 				],
 				'slug'            => [
-					'description' => __( 'URL-friendly identifier for the assessment.', 'digital-assessment-pro' ),
+					'description' => __( 'URL-friendly identifier for the assessment.', 'digital-assessment-engine' ),
 					'type'        => 'string',
 					'context'     => [ 'view', 'edit', 'embed' ],
 					'required'    => true,
 				],
 				'title'           => [
-					'description' => __( 'The title of the assessment.', 'digital-assessment-pro' ),
+					'description' => __( 'The title of the assessment.', 'digital-assessment-engine' ),
 					'type'        => 'string',
 					'context'     => [ 'view', 'edit', 'embed' ],
 					'required'    => true,
 				],
 				'description'     => [
-					'description' => __( 'Description or instructions for the assessment.', 'digital-assessment-pro' ),
+					'description' => __( 'Description or instructions for the assessment.', 'digital-assessment-engine' ),
 					'type'        => 'string',
 					'context'     => [ 'view', 'edit' ],
 				],
 				'status'          => [
-					'description' => __( 'Current status of the assessment.', 'digital-assessment-pro' ),
+					'description' => __( 'Current status of the assessment.', 'digital-assessment-engine' ),
 					'type'        => 'string',
 					'enum'        => [ 'draft', 'published', 'archived' ],
 					'context'     => [ 'view', 'edit' ],
 					'default'     => 'draft',
 				],
 				'current_version' => [
-					'description' => __( 'ID of the currently published version.', 'digital-assessment-pro' ),
+					'description' => __( 'ID of the currently published version.', 'digital-assessment-engine' ),
 					'type'        => 'integer',
 					'context'     => [ 'view', 'edit' ],
 					'readOnly'    => true,
 				],
 				'author_id'       => [
-					'description' => __( 'ID of the user who created the assessment.', 'digital-assessment-pro' ),
+					'description' => __( 'ID of the user who created the assessment.', 'digital-assessment-engine' ),
 					'type'        => 'integer',
 					'context'     => [ 'view', 'edit' ],
 					'readOnly'    => true,
 				],
 				'settings'        => [
-					'description' => __( 'JSON configuration object for the assessment.', 'digital-assessment-pro' ),
+					'description' => __( 'JSON configuration object for the assessment.', 'digital-assessment-engine' ),
 					'type'        => 'object',
 					'context'     => [ 'view', 'edit' ],
 				],
 				'created_at'      => [
-					'description' => __( 'Creation timestamp.', 'digital-assessment-pro' ),
+					'description' => __( 'Creation timestamp.', 'digital-assessment-engine' ),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => [ 'view', 'edit' ],
 					'readOnly'    => true,
 				],
 				'updated_at'      => [
-					'description' => __( 'Last modification timestamp.', 'digital-assessment-pro' ),
+					'description' => __( 'Last modification timestamp.', 'digital-assessment-engine' ),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => [ 'view', 'edit' ],
@@ -849,20 +849,20 @@ class AssessmentsController extends BaseController {
 	public function get_collection_params(): array {
 		return [
 			'status' => [
-				'description'       => __( 'Limit results to assessments with a specific status.', 'digital-assessment-pro' ),
+				'description'       => __( 'Limit results to assessments with a specific status.', 'digital-assessment-engine' ),
 				'type'              => 'string',
 				'default'           => 'published',
 				'enum'              => [ 'draft', 'published', 'archived' ],
 				'sanitize_callback' => 'sanitize_text_field',
 			],
 			'page'   => [
-				'description' => __( 'Current page of the collection.', 'digital-assessment-pro' ),
+				'description' => __( 'Current page of the collection.', 'digital-assessment-engine' ),
 				'type'        => 'integer',
 				'default'     => 1,
 				'minimum'     => 1,
 			],
 			'per_page' => [
-				'description' => __( 'Maximum number of items to be returned.', 'digital-assessment-pro' ),
+				'description' => __( 'Maximum number of items to be returned.', 'digital-assessment-engine' ),
 				'type'        => 'integer',
 				'default'     => 10,
 				'minimum'     => 1,

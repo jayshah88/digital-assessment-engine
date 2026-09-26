@@ -136,7 +136,7 @@ class SettingsController extends BaseController {
 		}
 
 		if ( ! empty( $errors ) ) {
-			return $this->error( 'validation_failed', __( 'Some settings could not be saved.', 'digital-assessment-pro' ), 422, [ 'errors' => $errors ] );
+			return $this->error( 'validation_failed', __( 'Some settings could not be saved.', 'digital-assessment-engine' ), 422, [ 'errors' => $errors ] );
 		}
 
 		ContentManager::clear_content_caches();
@@ -161,7 +161,7 @@ class SettingsController extends BaseController {
 			case 'dap_cache_ttl':
 				$int = absint( $value );
 				if ( $int < 1 ) {
-					return new \WP_Error( 'invalid_number', __( 'Value must be at least 1.', 'digital-assessment-pro' ) );
+					return new \WP_Error( 'invalid_number', __( 'Value must be at least 1.', 'digital-assessment-engine' ) );
 				}
 				return $int;
 
@@ -173,13 +173,13 @@ class SettingsController extends BaseController {
 					$value = json_decode( $value, true );
 				}
 				if ( ! is_array( $value ) ) {
-					return new \WP_Error( 'invalid_format', __( 'Setting must be a valid JSON object or array.', 'digital-assessment-pro' ) );
+					return new \WP_Error( 'invalid_format', __( 'Setting must be a valid JSON object or array.', 'digital-assessment-engine' ) );
 				}
 				// For score levels, validate structure.
 				if ( 'dap_score_levels' === $key ) {
 					foreach ( $value as $level ) {
 						if ( ! isset( $level['key'], $level['label'], $level['min'], $level['max'] ) ) {
-							return new \WP_Error( 'invalid_structure', __( 'Each score level must have key, label, min, and max.', 'digital-assessment-pro' ) );
+							return new \WP_Error( 'invalid_structure', __( 'Each score level must have key, label, min, and max.', 'digital-assessment-engine' ) );
 						}
 					}
 				}
@@ -263,7 +263,7 @@ class SettingsController extends BaseController {
 		$data    = $request->get_json_params();
 
 		if ( ! $section || ! is_array( $data ) ) {
-			return $this->error( 'invalid_params', __( 'Invalid section or data.', 'digital-assessment-pro' ), 400 );
+			return $this->error( 'invalid_params', __( 'Invalid section or data.', 'digital-assessment-engine' ), 400 );
 		}
 
 		$success = false;
@@ -285,13 +285,13 @@ class SettingsController extends BaseController {
 				$success = ContentManager::update_hubspot_config( $data );
 				break;
 			default:
-				return $this->error( 'invalid_section', __( 'Invalid content section.', 'digital-assessment-pro' ), 400 );
+				return $this->error( 'invalid_section', __( 'Invalid content section.', 'digital-assessment-engine' ), 400 );
 		}
 
 		if ( $success ) {
-			return $this->success( [ 'message' => __( 'Content saved successfully.', 'digital-assessment-pro' ) ] );
+			return $this->success( [ 'message' => __( 'Content saved successfully.', 'digital-assessment-engine' ) ] );
 		}
 
-		return $this->error( 'save_failed', __( 'Failed to save content.', 'digital-assessment-pro' ), 500 );
+		return $this->error( 'save_failed', __( 'Failed to save content.', 'digital-assessment-engine' ), 500 );
 	}
 }

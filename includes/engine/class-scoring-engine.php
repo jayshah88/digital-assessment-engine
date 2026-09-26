@@ -211,43 +211,43 @@ class ScoringEngine {
 		if ( $percentage >= 85 || ( $total_max > 0 && $score >= 0.85 * $total_max ) ) {
 			return [
 				'key'         => 'green',
-				'label'       => __( 'GREEN — Benchmark', 'digital-assessment-pro' ),
+				'label'       => __( 'GREEN — Benchmark', 'digital-assessment-engine' ),
 				'color'       => '#069e7b',
-				'headline'    => __( 'Benchmark readiness — sustain and scale', 'digital-assessment-pro' ),
-				'description' => __( 'Your capability is structured for scalable success. Maintain this standard across new milestones with continuous discipline.', 'digital-assessment-pro' ),
-				'cta'         => __( 'Explore next steps and acceleration strategies', 'digital-assessment-pro' ),
+				'headline'    => __( 'Benchmark readiness — sustain and scale', 'digital-assessment-engine' ),
+				'description' => __( 'Your capability is structured for scalable success. Maintain this standard across new milestones with continuous discipline.', 'digital-assessment-engine' ),
+				'cta'         => __( 'Explore next steps and acceleration strategies', 'digital-assessment-engine' ),
 				'cta_url'     => $default_url,
 			];
 		}
 		if ( $percentage >= 65 || ( $total_max > 0 && $score >= 0.65 * $total_max ) ) {
 			return [
 				'key'         => 'gold',
-				'label'       => __( 'GOLD — Low Risk', 'digital-assessment-pro' ),
+				'label'       => __( 'GOLD — Low Risk', 'digital-assessment-engine' ),
 				'color'       => '#edaf18',
-				'headline'    => __( 'Low risk — optimise remaining gaps', 'digital-assessment-pro' ),
-				'description' => __( 'Strong readiness across most dimensions. The remaining gaps are specific and addressable. Prioritise the remaining actions before proceeding.', 'digital-assessment-pro' ),
-				'cta'         => __( 'Review recommendations and priority actions', 'digital-assessment-pro' ),
+				'headline'    => __( 'Low risk — optimise remaining gaps', 'digital-assessment-engine' ),
+				'description' => __( 'Strong readiness across most dimensions. The remaining gaps are specific and addressable. Prioritise the remaining actions before proceeding.', 'digital-assessment-engine' ),
+				'cta'         => __( 'Review recommendations and priority actions', 'digital-assessment-engine' ),
 				'cta_url'     => $default_url,
 			];
 		}
 		if ( $percentage >= 40 || ( $total_max > 0 && $score >= 0.40 * $total_max ) ) {
 			return [
 				'key'         => 'amber',
-				'label'       => __( 'AMBER — Moderate Risk', 'digital-assessment-pro' ),
+				'label'       => __( 'AMBER — Moderate Risk', 'digital-assessment-engine' ),
 				'color'       => '#e76424',
-				'headline'    => __( 'Moderate risk — specific gaps to close', 'digital-assessment-pro' ),
-				'description' => __( 'Good foundations in some areas, but material gaps remain. Addressing these now is significantly more effective than remediating later.', 'digital-assessment-pro' ),
-				'cta'         => __( 'Schedule a review session to close the gaps', 'digital-assessment-pro' ),
+				'headline'    => __( 'Moderate risk — specific gaps to close', 'digital-assessment-engine' ),
+				'description' => __( 'Good foundations in some areas, but material gaps remain. Addressing these now is significantly more effective than remediating later.', 'digital-assessment-engine' ),
+				'cta'         => __( 'Schedule a review session to close the gaps', 'digital-assessment-engine' ),
 				'cta_url'     => $default_url,
 			];
 		}
 		return [
 			'key'         => 'red',
-			'label'       => __( 'RED — High Risk', 'digital-assessment-pro' ),
+			'label'       => __( 'RED — High Risk', 'digital-assessment-engine' ),
 			'color'       => '#c02b12',
-			'headline'    => __( 'High risk — foundational action required', 'digital-assessment-pro' ),
-			'description' => __( 'Significant gaps in capability readiness. At current trajectory, schedule slippage or rework are likely without intervention.', 'digital-assessment-pro' ),
-			'cta'         => __( 'Connect with a specialist to discuss your plan', 'digital-assessment-pro' ),
+			'headline'    => __( 'High risk — foundational action required', 'digital-assessment-engine' ),
+			'description' => __( 'Significant gaps in capability readiness. At current trajectory, schedule slippage or rework are likely without intervention.', 'digital-assessment-engine' ),
+			'cta'         => __( 'Connect with a specialist to discuss your plan', 'digital-assessment-engine' ),
 			'cta_url'     => $default_url,
 		];
 	}
@@ -270,8 +270,8 @@ class ScoringEngine {
 			if ( ! $rec_text ) {
 				// Generate generic fallback.
 				$rec_text = $score < 50
-					? sprintf( __( 'Prioritize improving your %s capabilities — this is a critical growth area.', 'digital-assessment-pro' ), $block['title'] )
-					: sprintf( __( 'Your %s performance is solid. Continue building on this strength.', 'digital-assessment-pro' ), $block['title'] );
+					? sprintf( __( 'Prioritize improving your %s capabilities — this is a critical growth area.', 'digital-assessment-engine' ), $block['title'] )
+					: sprintf( __( 'Your %s performance is solid. Continue building on this strength.', 'digital-assessment-engine' ), $block['title'] );
 			}
 			$recs[] = [
 				'block_id'    => $block_id,

@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 class Manager {
 
-	private string $slug = 'digital-assessment-pro';
+	private string $slug = 'digital-assessment-engine';
 
 	public function boot(): void {
 		add_action( 'admin_menu', [ $this, 'register_menu' ] );
@@ -23,8 +23,8 @@ class Manager {
 		$main_cap = 'dap_view_submissions';
 
 		add_menu_page(
-			__( 'Assessment Pro', 'digital-assessment-pro' ),
-			__( 'Assessments', 'digital-assessment-pro' ),
+			__( 'Assessment Pro', 'digital-assessment-engine' ),
+			__( 'Assessments', 'digital-assessment-engine' ),
 			$main_cap,
 			$this->slug,
 			[ $this, 'render_admin_app' ],
@@ -33,12 +33,12 @@ class Manager {
 		);
 
 		$pages = [
-			[ 'assessments',    __( 'All Assessments', 'digital-assessment-pro' ),  'dap_manage_assessments' ],
-			[ 'builder',        __( 'Builder',          'digital-assessment-pro' ),  'dap_manage_questions' ],
-			[ 'submissions',    __( 'Submissions',       'digital-assessment-pro' ),  'dap_view_submissions' ],
-			[ 'leads',          __( 'Leads',             'digital-assessment-pro' ),  'dap_view_leads' ],
-			[ 'analytics',      __( 'Analytics',         'digital-assessment-pro' ),  'dap_view_analytics' ],
-			[ 'settings',       __( 'Settings',          'digital-assessment-pro' ),  'dap_manage_settings' ],
+			[ 'assessments',    __( 'All Assessments', 'digital-assessment-engine' ),  'dap_manage_assessments' ],
+			[ 'builder',        __( 'Builder',          'digital-assessment-engine' ),  'dap_manage_questions' ],
+			[ 'submissions',    __( 'Submissions',       'digital-assessment-engine' ),  'dap_view_submissions' ],
+			[ 'leads',          __( 'Leads',             'digital-assessment-engine' ),  'dap_view_leads' ],
+			[ 'analytics',      __( 'Analytics',         'digital-assessment-engine' ),  'dap_view_analytics' ],
+			[ 'settings',       __( 'Settings',          'digital-assessment-engine' ),  'dap_manage_settings' ],
 		];
 
 		foreach ( $pages as [ $sub_slug, $label, $sub_cap ] ) {
@@ -56,7 +56,7 @@ class Manager {
 	public function render_admin_app(): void {
 		$user = wp_get_current_user();
 		if ( ! $user || ! $user->exists() || ( ! $user->has_cap( 'dap_view_submissions' ) && ! $user->has_cap( 'manage_options' ) ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'digital-assessment-pro' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'digital-assessment-engine' ) );
 		}
 		echo '<div id="dap-admin-root" class="dap-admin-wrap"></div>';
 	}
@@ -93,7 +93,7 @@ class Manager {
 			// Show admin notice that assets need building.
 			add_action( 'admin_notices', function () {
 				echo '<div class="notice notice-warning"><p>';
-				echo esc_html__( 'Digital Assessment Pro: Frontend assets not built. Run npm run build in the plugin directory.', 'digital-assessment-pro' );
+				echo esc_html__( 'Digital Assessment Pro: Frontend assets not built. Run npm run build in the plugin directory.', 'digital-assessment-engine' );
 				echo '</p></div>';
 			} );
 			return;
@@ -128,15 +128,15 @@ class Manager {
 				'cacheTtl'          => (int) get_option( 'dap_cache_ttl', 300 ),
 			],
 			'i18n'        => [
-				'assessments' => __( 'Assessments', 'digital-assessment-pro' ),
-				'builder'     => __( 'Builder', 'digital-assessment-pro' ),
-				'leads'       => __( 'Leads', 'digital-assessment-pro' ),
-				'analytics'   => __( 'Analytics', 'digital-assessment-pro' ),
-				'settings'    => __( 'Settings', 'digital-assessment-pro' ),
-				'save'        => __( 'Save', 'digital-assessment-pro' ),
-				'cancel'      => __( 'Cancel', 'digital-assessment-pro' ),
-				'delete'      => __( 'Delete', 'digital-assessment-pro' ),
-				'publish'     => __( 'Publish', 'digital-assessment-pro' ),
+				'assessments' => __( 'Assessments', 'digital-assessment-engine' ),
+				'builder'     => __( 'Builder', 'digital-assessment-engine' ),
+				'leads'       => __( 'Leads', 'digital-assessment-engine' ),
+				'analytics'   => __( 'Analytics', 'digital-assessment-engine' ),
+				'settings'    => __( 'Settings', 'digital-assessment-engine' ),
+				'save'        => __( 'Save', 'digital-assessment-engine' ),
+				'cancel'      => __( 'Cancel', 'digital-assessment-engine' ),
+				'delete'      => __( 'Delete', 'digital-assessment-engine' ),
+				'publish'     => __( 'Publish', 'digital-assessment-engine' ),
 			],
 		] );
 	}

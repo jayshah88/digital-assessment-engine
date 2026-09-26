@@ -55,7 +55,7 @@ class BlocksController extends BaseController {
 		$weight        = (float) ( $request->get_param( 'weight' ) ?? 1.0 );
 
 		if ( ! $assessment_id || empty( $title ) ) {
-			return $this->error( 'missing_params', __( 'assessment_id and title are required.', 'digital-assessment-pro' ) );
+			return $this->error( 'missing_params', __( 'assessment_id and title are required.', 'digital-assessment-engine' ) );
 		}
 
 		// Get next sort order.
@@ -108,7 +108,7 @@ class BlocksController extends BaseController {
 		);
 
 		if ( ! $block ) {
-			return $this->not_found( __( 'Block not found.', 'digital-assessment-pro' ) );
+			return $this->not_found( __( 'Block not found.', 'digital-assessment-engine' ) );
 		}
 
 		$data   = [];
@@ -166,7 +166,7 @@ class BlocksController extends BaseController {
 		);
 
 		if ( ! $block ) {
-			return $this->not_found( __( 'Block not found.', 'digital-assessment-pro' ) );
+			return $this->not_found( __( 'Block not found.', 'digital-assessment-engine' ) );
 		}
 
 		$assessment_id = intval( $block['assessment_id'] );

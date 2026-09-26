@@ -32,23 +32,23 @@ class Validator {
 
 		// Required fields.
 		if ( empty( $data['title'] ) ) {
-			$this->errors[] = __( 'Assessment title is required.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Assessment title is required.', 'digital-assessment-engine' );
 		}
 
 		// Title length.
 		if ( ! empty( $data['title'] ) && strlen( $data['title'] ) > 500 ) {
-			$this->errors[] = __( 'Assessment title must be under 500 characters.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Assessment title must be under 500 characters.', 'digital-assessment-engine' );
 		}
 
 		// Slug format.
 		if ( ! empty( $data['slug'] ) && ! preg_match( '/^[a-z0-9-]+$/', $data['slug'] ) ) {
-			$this->errors[] = __( 'Slug must contain only lowercase letters, numbers, and hyphens.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Slug must contain only lowercase letters, numbers, and hyphens.', 'digital-assessment-engine' );
 		}
 
 		// Status enum.
 		$valid_statuses = [ 'draft', 'published', 'archived' ];
 		if ( ! empty( $data['status'] ) && ! in_array( $data['status'], $valid_statuses, true ) ) {
-			$this->errors[] = __( 'Invalid assessment status.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Invalid assessment status.', 'digital-assessment-engine' );
 		}
 
 		return empty( $this->errors );
@@ -65,19 +65,19 @@ class Validator {
 
 		// Required fields.
 		if ( empty( $data['question_text'] ) ) {
-			$this->errors[] = __( 'Question text is required.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Question text is required.', 'digital-assessment-engine' );
 		}
 
 		// Question type.
 		$valid_types = [ 'single', 'multi', 'scale', 'text', 'boolean' ];
 		if ( ! empty( $data['question_type'] ) && ! in_array( $data['question_type'], $valid_types, true ) ) {
-			$this->errors[] = __( 'Invalid question type.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Invalid question type.', 'digital-assessment-engine' );
 		}
 
 		// Options for choice questions.
 		if ( in_array( $data['question_type'] ?? '', [ 'single', 'multi', 'boolean' ], true ) ) {
 			if ( empty( $data['options'] ) || count( $data['options'] ) < 2 ) {
-				$this->errors[] = __( 'Choice questions require at least 2 options.', 'digital-assessment-pro' );
+				$this->errors[] = __( 'Choice questions require at least 2 options.', 'digital-assessment-engine' );
 			}
 		}
 
@@ -95,12 +95,12 @@ class Validator {
 
 		// Assessment ID required.
 		if ( empty( $data['assessment_id'] ) || ! is_numeric( $data['assessment_id'] ) ) {
-			$this->errors[] = __( 'Valid assessment ID is required.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Valid assessment ID is required.', 'digital-assessment-engine' );
 		}
 
 		// Answers must be array.
 		if ( ! isset( $data['answers'] ) || ! is_array( $data['answers'] ) ) {
-			$this->errors[] = __( 'Answers must be provided as an array.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Answers must be provided as an array.', 'digital-assessment-engine' );
 		}
 
 		return empty( $this->errors );
@@ -114,7 +114,7 @@ class Validator {
 	 */
 	public function validate_email( string $email ): bool {
 		if ( ! is_email( $email ) ) {
-			$this->errors[] = __( 'Invalid email address.', 'digital-assessment-pro' );
+			$this->errors[] = __( 'Invalid email address.', 'digital-assessment-engine' );
 			return false;
 		}
 		return true;

@@ -36,7 +36,7 @@ final class Plugin {
 
 	private function load_textdomain(): void {
 		load_plugin_textdomain(
-			'digital-assessment-pro',
+			'digital-assessment-engine',
 			false,
 			dirname( plugin_basename( DAP_FILE ) ) . '/languages'
 		);
@@ -93,7 +93,8 @@ final class Plugin {
 	}
 
 	private function register_shortcodes(): void {
-		add_shortcode( 'dap_assessment', [ $this->get( 'frontend' ), 'render_shortcode' ] );
+		add_shortcode( 'digital_assessment', [ $this->get( 'frontend' ), 'render_shortcode' ] );
+		add_shortcode( 'dap_assessment',     [ $this->get( 'frontend' ), 'render_shortcode' ] );
 	}
 
 	private function register_blocks(): void {

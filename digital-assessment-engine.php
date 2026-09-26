@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Digital Assessment Pro
- * Plugin URI:        https://wordpress.org/plugins/digital-assessment-pro/
- * Description:       Enterprise-grade digital assessment engine with React UI, radar charts, lead capture, scoring engine, and analytics. Built for SaaS-level quality.
+ * Plugin Name:       Digital Assessment Engine – Interactive Scorecards & Radar Charts
+ * Plugin URI:        https://wordpress.org/plugins/digital-assessment-engine/
+ * Description:       Enterprise-grade interactive assessment and scorecard engine with React UI, radar charts, lead capture, weighted scoring, and analytics.
  * Version:           2.1.0
  * Requires at least: 6.2
  * Requires PHP:      8.0
@@ -11,11 +11,11 @@
  * Author URI:        https://profiles.wordpress.org/jayshah88/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       digital-assessment-pro
+ * Text Domain:       digital-assessment-engine
  * Domain Path:       /languages
  * Network:           false
  *
- * @package DigitalAssessmentPro
+ * @package DigitalAssessmentEngine
  */
 
 // Prevent direct file access.
@@ -43,7 +43,7 @@ if ( ! function_exists( 'dap_requirements_met' ) ) {
 				'<div class="notice notice-error"><p>%s</p></div>',
 				sprintf(
 					/* translators: 1: required PHP version, 2: current PHP version */
-					esc_html__( 'Digital Assessment Pro requires PHP %1$s or higher. You are running PHP %2$s.', 'digital-assessment-pro' ),
+					esc_html__( 'Digital Assessment Engine requires PHP %1$s or higher. You are running PHP %2$s.', 'digital-assessment-engine' ),
 					DAP_MIN_PHP,
 					PHP_VERSION
 				)
@@ -55,7 +55,7 @@ if ( ! function_exists( 'dap_requirements_met' ) ) {
 				'<div class="notice notice-error"><p>%s</p></div>',
 				sprintf(
 					/* translators: 1: required WP version, 2: current WP version */
-					esc_html__( 'Digital Assessment Pro requires WordPress %1$s or higher.', 'digital-assessment-pro' ),
+					esc_html__( 'Digital Assessment Engine requires WordPress %1$s or higher.', 'digital-assessment-engine' ),
 					DAP_MIN_WP
 				)
 			) );

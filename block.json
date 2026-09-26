@@ -1,14 +1,14 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "digital-assessment-pro/assessment",
+  "name": "digital-assessment-engine/assessment",
   "version": "2.1.0",
-  "title": "Digital Assessment",
+  "title": "Digital Assessment Engine",
   "category": "interactive",
   "icon": "chart-area",
   "description": "Embed an interactive scored assessment with radar chart results and lead capture.",
   "keywords": ["assessment", "quiz", "survey", "scoring", "radar"],
-  "textdomain": "digital-assessment-pro",
+  "textdomain": "digital-assessment-engine",
   "supports": {
     "html": false,
     "align": ["wide", "full"],
