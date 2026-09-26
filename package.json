@@ -1,0 +1,39 @@
+{
+  "name": "digital-assessment-pro",
+  "version": "2.1.0",
+  "description": "React frontend for Digital Assessment Pro WordPress plugin",
+  "author": "Gexior Systems, Jay Shah <shahjaya.94@gmail.com>",
+  "homepage": "https://profiles.wordpress.org/jayshah88/",
+  "license": "GPL-2.0-or-later",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx --report-unused-disable-directives --max-warnings 0",
+    "zip": "npm run build && node scripts/zip.js"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.51.11",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.8",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^0.408.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "recharts": "^2.12.7",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "archiver": "^8.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "vite": "^5.3.4"
+  }
+}

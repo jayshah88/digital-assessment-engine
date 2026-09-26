@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "digital-assessment-pro/assessment",
+  "version": "2.1.0",
+  "title": "Digital Assessment",
+  "category": "interactive",
+  "icon": "chart-area",
+  "description": "Embed an interactive scored assessment with radar chart results and lead capture.",
+  "keywords": ["assessment", "quiz", "survey", "scoring", "radar"],
+  "textdomain": "digital-assessment-pro",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": { "margin": true, "padding": true }
+  },
+  "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "slug": {
+      "type": "string",
+      "default": ""
+    },
+    "align": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "example": {
+    "attributes": {
+      "slug": "example-assessment"
+    }
+  }
+}
