@@ -1,6 +1,10 @@
 # Digital Assessment Engine — WordPress Plugin
 
-**Version:** 2.1.0 · **Requires PHP:** 8.0+ · **Requires WordPress:** 6.2+
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
+[![WordPress](https://img.shields.io/badge/WordPress-6.2%2B-21759b.svg)](https://wordpress.org)
+[![PHP](https://img.shields.io/badge/PHP-8.0%2B-777bb4.svg)](https://php.net)
+[![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://react.dev)
+[![Release](https://img.shields.io/badge/Release-v2.1.0-green.svg)](https://github.com/jayshah88/digital-assessment-engine/releases)
 
 A production-grade, SaaS-quality interactive assessment and scorecard engine with React frontend, weighted scoring engine, radar chart visualisations, lead capture, email automation, and analytics.
 
@@ -120,20 +124,15 @@ digital-assessment-engine/
 ```bash
 # 1. Clone / upload to wp-content/plugins/
 cd wp-content/plugins
-git clone https://github.com/your-repo/digital-assessment-pro.git
+git clone https://github.com/jayshah88/digital-assessment-engine.git
 
-# 2. Install Node dependencies & build
-cd digital-assessment-pro
+# 2. Pre-built production assets are included out-of-the-box in /assets/
+# (Optional for developers modifying React source):
+cd digital-assessment-engine
 npm install
 npm run build
 
 # 3. Activate the plugin in WP Admin → Plugins
-```
-
-### Composer (optional)
-
-```bash
-composer require your-vendor/digital-assessment-pro
 ```
 
 ---
@@ -602,7 +601,7 @@ Override any email by creating a PHP file in your theme:
 
 ```
 your-theme/
-└── digital-assessment-pro/
+└── digital-assessment-engine/
     └── emails/
         ├── user-results.php
         └── admin-notification.php
